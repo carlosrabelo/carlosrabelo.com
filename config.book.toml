@@ -1,0 +1,105 @@
+baseURL = "https://carlosrabelo.com/"
+title = "Carlos Rabelo"
+theme = "book"
+defaultContentLanguage = "en"
+locale = "en-US"
+enableGitInfo = true
+copyright = "© 2018-2026 Carlos Rabelo"
+
+[pagination]
+  pagerSize = 10
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[menu]
+
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "articles"
+    name = "Articles"
+    url = "/articles/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML"]
+
+[outputFormats.RSS]
+  mediatype = "application/rss"
+  baseName = "atom"
+
+[outputFormats.JSON]
+  mediatype = "application/json"
+  baseName = "feed"
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = false
+  [markup.tableOfContents]
+    startLevel = 1
+  [markup.highlight]
+    style = "github"
+
+[params]
+  author = "Carlos Rabelo"
+  jobTitle = "Software Engineer & Systems Architect"
+  description = "Software engineering, systems architecture, network tooling, and open-source infrastructure by Carlos Rabelo."
+  logo = "/assets/og-default.png"
+  images = ["/assets/og-default.png"]
+  knowsAbout = [
+    "Systems Architecture",
+    "Go (Programming Language)",
+    "Networking",
+    "Emulation",
+    "Open Source",
+  ]
+  BookTheme = "auto"
+  BookSection = "*"
+  BookSearch = true
+  BookComments = true
+  BookDateFormat = "02 Jan 2006"
+  BookLogo = "assets/og-default.png"
+  BookFavicon = "assets/favicon.ico"
+  BookRepo = "https://github.com/carlosrabelo/carlosrabelo.com"
+  BookLastChangeLink = "{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}"
+  BookEditLink = "{{ .Site.Params.BookRepo }}/edit/master/{{ .Path }}"
+  BookServiceWorker = false
+  BookPortableLinks = false
+  # Uncomment githubRepo after installing the Utterances app on the repository.
+  [params.comments]
+    # githubRepo = "carlosrabelo/carlosrabelo.com"
+    theme = "preferred-color-scheme"
+  [params.social]
+    github = "https://github.com/carlosrabelo"
+    instagram = "https://www.instagram.com/carlosrabelo"
+    twitter = "https://x.com/carlosrabelo"
+  [params.sister_site]
+    url = "https://carlosrabelo.com.br/"
+    lang = "pt-BR"
+    label = "Português"
+    flag = "🇧🇷"
+
+[services.googleAnalytics]
+  id = "G-QV74CV38L4"
+
+[privacy.googleAnalytics]
+  disable = false
+  respectDoNotTrack = true

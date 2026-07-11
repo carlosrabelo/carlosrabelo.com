@@ -1,0 +1,9 @@
+{{ if gt .TotalPages 1 }}
+<div class="pagination-wrapper text-center">
+  <div class="pagination">
+    {{ if .HasPrev }}<a href="{{ .Prev.URL }}">&laquo; {{ i18n "previous" }}</a>{{ end }}
+    <span>{{ i18n "page-of" (dict "Page" .PageNumber "Total" .TotalPages) }}</span>
+    {{ if .HasNext }}<a href="{{ .Next.URL }}">{{ i18n "next" }} &raquo;</a>{{ end }}
+  </div>
+</div>
+{{ end }}

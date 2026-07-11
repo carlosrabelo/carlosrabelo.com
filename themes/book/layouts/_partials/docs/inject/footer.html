@@ -1,0 +1,22 @@
+{{- /* Site feeds + social links under page footer. */ -}}
+<div class="book-site-links flex justify-between" style="margin-top: 1rem; align-items: flex-start; gap: 1rem;">
+  <div class="flex gap" style="flex-wrap: wrap;">
+    {{- with .Site.Params.social.github -}}
+    <a href="{{ . }}" rel="me">GitHub</a>
+    {{- end -}}
+    {{- with .Site.Params.social.linkedin -}}
+    <a href="{{ . }}" rel="me">LinkedIn</a>
+    {{- end -}}
+    {{- with .Site.Params.social.twitter -}}
+    <a href="{{ . }}" rel="me">X</a>
+    {{- end -}}
+    {{- with .Site.Params.social.instagram -}}
+    <a href="{{ . }}" rel="me">Instagram</a>
+    {{- end -}}
+    <a href="{{ "atom.xml" | relURL }}">RSS</a>
+    <a href="{{ "feed.json" | relURL }}">JSON Feed</a>
+  </div>
+  {{- with .Site.Params.sister_site -}}
+  <a class="language-flag" href="{{ .url }}" hreflang="{{ .lang }}" lang="{{ .lang }}" rel="alternate" title="{{ .label }}" aria-label="{{ .label }}">{{ .flag }}</a>
+  {{- end -}}
+</div>

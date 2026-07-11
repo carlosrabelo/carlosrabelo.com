@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="recent-posts">
+  <h1 class="section-title">{{ .Title }}</h1>
+  {{ if .Content }}
+  <div class="section-description{{ if in (partial "article-sections.html" .) .Section }} markdown{{ end }}">
+    {{ .Content }}
+  </div>
+  {{ end }}
+  <div class="posts">
+    {{ $paginator := .Paginate .Pages }}
+    {{ range $paginator.Pages }}
+    {{ partial "post-list-item.html" . }}
+    {{ end }}
+  </div>
+  {{ partial "pagination.html" $paginator }}
+</div>
+{{ end }}

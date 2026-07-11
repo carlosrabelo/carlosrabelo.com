@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{- $name := .Site.Params.Name | default .Site.Params.author | default .Site.Title -}}
+{{- $about := .Site.Params.About | default .Site.Params.jobTitle | default .Site.Params.description -}}
+{{- $picture := .Site.Params.ProfilePicture | default .Site.Params.logo -}}
+{{ with $picture }}
+<div class="row">
+  <div class="col-sm-3 col-centered text-center">
+    <img alt="{{ $name }}" class="img-fluid rounded-circle user-picture" src="{{ . | relURL }}">
+  </div>
+</div>
+{{ end }}
+<div class="row">
+  <div class="col-xs-12 user-profile text-center">
+    <h1 id="user-name">{{ $name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 user-social text-center">
+    {{ partial "social.html" . }}
+  </div>
+</div>
+{{ with $about }}
+<div class="row">
+  <div class="col-lg-6 offset-lg-3 user-description text-center">
+    <p>{{ . }}</p>
+  </div>
+</div>
+{{ end }}
+<div class="row">
+  <div class="col-xs-12">
+    <ul id="post-list">
+      {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" (partial "article-sections.html" .)) }}
+      {{ range $paginator.Pages }}
+      {{ partial "post-list-item.html" . }}
+      {{ end }}
+    </ul>
+    {{ partial "pagination.html" $paginator }}
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,22 @@
+- id: read-more
+  translation: Read more
+- id: skip-to-content
+  translation: Skip to content
+- id: page-not-found
+  translation: The page you are looking for does not exist.
+- id: back-home
+  translation: Back to home
+- id: previous
+  translation: Previous
+- id: next
+  translation: Next
+- id: page-of
+  translation: "Page {{ .Page }} of {{ .Total }}"
+- id: reading-time
+  translation: "{{ .Count }} min read"
+- id: updated-on
+  translation: "Updated on {{ .Date }}"
+- id: comments-noscript
+  translation: Comments require JavaScript.
+- id: nav-label
+  translation: Main navigation

@@ -1,0 +1,21 @@
+<div class="post">
+  <div class="post-header">
+    {{ if in (partial "article-sections.html" .) .Section }}
+    <div class="meta">
+      <div class="date">
+        <span class="day">{{ .Date.Format "02" }}</span>
+        <span class="rest">{{ partial "date-month-year.html" .Date }}</span>
+      </div>
+    </div>
+    {{ end }}
+    <div class="matter">
+      <h4 class="title small">
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ if .Draft }}<span class="draft-label">DRAFT</span>{{ end }}
+      </h4>
+      <span class="description">
+        {{ with .Description }}{{ . }}{{ else }}{{ .Summary | truncate 120 }}{{ end }}
+      </span>
+    </div>
+  </div>
+</div>

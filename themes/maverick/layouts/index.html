@@ -1,0 +1,11 @@
+{{ define "main" }}
+<div class="recent-posts">
+  <div class="posts">
+    {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" (partial "article-sections.html" .)) }}
+    {{ range $paginator.Pages }}
+    {{ partial "post-list-item.html" . }}
+    {{ end }}
+  </div>
+  {{ partial "pagination.html" $paginator }}
+</div>
+{{ end }}

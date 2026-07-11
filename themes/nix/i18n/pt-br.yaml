@@ -1,0 +1,22 @@
+- id: read-more
+  translation: Ler mais
+- id: skip-to-content
+  translation: Ir para o conteúdo
+- id: page-not-found
+  translation: A página que você procura não existe.
+- id: back-home
+  translation: Voltar para o início
+- id: previous
+  translation: Anterior
+- id: next
+  translation: Próximo
+- id: page-of
+  translation: "Página {{ .Page }} de {{ .Total }}"
+- id: reading-time
+  translation: "{{ .Count }} min de leitura"
+- id: updated-on
+  translation: "Atualizado em {{ .Date }}"
+- id: comments-noscript
+  translation: Comentários requerem JavaScript.
+- id: nav-label
+  translation: Navegação principal

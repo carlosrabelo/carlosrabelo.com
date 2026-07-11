@@ -1,0 +1,22 @@
+<div class="header">
+  {{ if .IsHome }}<h1 class="site-title">{{ else }}<div class="site-title">{{ end }}
+    <a href="{{ "" | relLangURL }}">{{ .Site.Title }}</a>
+  {{ if .IsHome }}</h1>{{ else }}</div>{{ end }}
+  <div class="site-description">
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="flat">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        {{ $external := strings.HasPrefix .URL "http" }}
+        {{ $active := or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
+        {{ if and (not $active) (not $external) .URL }}
+          {{ $active = or (eq $currentPage.RelPermalink .URL) (hasPrefix $currentPage.RelPermalink .URL) }}
+        {{ end }}
+        <li>
+          <a href="{{ .URL }}"{{ if $active }} class="active" aria-current="page"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</div>

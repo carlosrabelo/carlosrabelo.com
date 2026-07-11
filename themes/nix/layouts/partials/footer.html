@@ -1,0 +1,15 @@
+{{- $name := .Site.Params.Name | default .Site.Params.author | default .Site.Title -}}
+<footer class="footer">
+  <div class="footer-bar">
+    <p>
+      © 2018-{{ now.Format "2006" }} {{ $name }}
+      &middot;
+      <a href="{{ "/atom.xml" | relURL }}">RSS</a>
+      &middot;
+      <a href="{{ "/feed.json" | relURL }}">JSON Feed</a>
+    </p>
+    {{ with .Site.Params.sister_site }}
+    <a class="language-flag" href="{{ .url }}" hreflang="{{ .lang }}" lang="{{ .lang }}" rel="alternate" title="{{ .label }}" aria-label="{{ .label }}">{{ .flag }}</a>
+    {{ end }}
+  </div>
+</footer>

@@ -1,0 +1,17 @@
+name = "Nix"
+license = "MIT"
+licenselink = "https://github.com/LordMathis/hugo-theme-nix/blob/master/LICENSE.md"
+description = "Nix terminal-inspired Hugo theme with blog feeds, SEO, and comments"
+homepage = "https://carlosrabelo.com.br/"
+demosite = "https://carlosrabelo.com.br/"
+tags = ["blog", "minimal", "unix", "terminal"]
+features = ["blog", "rss", "json-feed", "comments", "seo"]
+min_version = "0.120.0"
+
+[author]
+  name = "Carlos Rabelo"
+  homepage = "https://carlosrabelo.com.br/"
+
+[original]
+  name = "Matúš Námešný"
+  homepage = "https://github.com/LordMathis/hugo-theme-nix"

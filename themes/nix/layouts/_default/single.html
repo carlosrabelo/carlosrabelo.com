@@ -1,0 +1,28 @@
+{{ define "main" }}
+{{- $isArticle := in (partial "article-sections.html" .) .Section -}}
+<article class="post {{ if $isArticle }}type-post{{ else }}type-page{{ end }}">
+  <h1 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+  {{ if $isArticle }}
+  <div class="post-header-meta">
+    <span class="post-date">{{ partial "date-full.html" .Date }}</span>
+  </div>
+  {{ end }}
+  <div class="post-content markdown">
+    {{ .Content }}
+  </div>
+  {{ if $isArticle }}
+  <div class="post-meta">
+    {{ if .ReadingTime }}<span class="reading-time">{{ i18n "reading-time" (dict "Count" .ReadingTime) }}</span>{{ end }}
+    {{ if .Lastmod }}<span class="lastmod">{{ i18n "updated-on" (dict "Date" (partial "date-full.html" .Lastmod)) }}</span>{{ end }}
+  </div>
+  {{ partial "tags.html" . }}
+  <nav class="post-nav">
+    {{ with .PrevInSection }}<a class="prev" href="{{ .Permalink }}">&laquo; {{ .Title }}</a>{{ end }}
+    {{ with .NextInSection }}<a class="next" href="{{ .Permalink }}">{{ .Title }} &raquo;</a>{{ end }}
+  </nav>
+  <div id="comments" class="post-comments">
+    {{ partial "comments.html" . }}
+  </div>
+  {{ end }}
+</article>
+{{ end }}

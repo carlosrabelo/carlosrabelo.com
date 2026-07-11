@@ -1,0 +1,10 @@
+{{ if .Site.Params.comments.githubRepo }}
+<script src="https://utteranc.es/client.js"
+    repo="{{ .Site.Params.comments.githubRepo }}"
+    issue-term="pathname"
+    theme="{{ .Site.Params.comments.theme | default "github-light" }}"
+    crossorigin="anonymous"
+    async>
+</script>
+<noscript>{{ i18n "comments-noscript" }}</noscript>
+{{ end }}

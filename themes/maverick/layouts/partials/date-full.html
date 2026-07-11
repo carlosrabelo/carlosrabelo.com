@@ -1,0 +1,4 @@
+{{- /* English day + short month + year, e.g. "02 Jan 2006" */ -}}
+{{- $months := slice "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec" -}}
+{{- $month := index $months (sub .Month 1) -}}
+{{- printf "%02d %s %d" .Day $month .Year -}}

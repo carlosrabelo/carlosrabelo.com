@@ -1,0 +1,39 @@
+---
+description: Route new articles to the correct Hugo site and section
+alwaysApply: true
+---
+
+# Editorial routing
+
+Never put articles in `carlosrabelo/` (GitHub profile README only).
+
+Override if the user says "só no .br" or "nos dois".
+
+## Campus engineering → both sites (not a literal translation)
+
+VLAN, inventory, SUAP, switches, machine fleet, public-IT operations tooling.
+
+- Same English slug.
+- `carlosrabelo.com/content/projects/{slug}.md` — short English showcase.
+- `carlosrabelo.com.br/content/engenharia/{slug}.md` — Portuguese with institutional context.
+- Cross-link both pages at the end.
+
+## One site
+
+**`carlosrabelo.com`** (English, international portfolio)
+
+- Shipable tool/repo → `content/projects/{slug}.md`
+- Engineering/learning article → `content/articles/{slug}.md`
+- Bio → `content/about.md`
+- Do not copy gobi, bip38, learning-go, act, or GRC to `.br`.
+
+**`carlosrabelo.com.br`** (Portuguese hub)
+
+- Campus-applied engineering only (Negev, TatuScan pattern) → `content/engenharia/{slug}.md`
+- Coordination, governance, distro, CMS → `content/gestao/{slug}.md`
+- Focus, career, behavior → `content/ensaios/{slug}.md`
+- Bio → `content/sobre/index.md`
+
+## Frontmatter
+
+English filenames. Set `section` and `categories` to the directory name. Tags: short, unaccented, language of the site. Keep aliases for old `/posts/` and `/codes/` URLs when moving or replacing a page.

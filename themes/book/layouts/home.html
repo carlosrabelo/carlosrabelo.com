@@ -1,0 +1,38 @@
+{{ define "main" }}
+  {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" (partial "article-sections.html" .)) }}
+  {{ range $paginator.Pages }}
+  <article class="book-post markdown">
+    <h2>
+      <a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a>
+    </h2>
+    <div class="book-post-container flex gap">
+      <div>
+        {{ partial "docs/post-meta" . }}
+        <div class="book-post-content markdown-inner">
+          {{- with .Description -}}
+            {{- . -}}
+          {{- else -}}
+            {{- .Summary | truncate 256 -}}
+          {{- end -}}
+        </div>
+      </div>
+    </div>
+  </article>
+  {{ end }}
+{{ end }}
+
+{{ define "toc-container" }}
+<aside class="book-toc">
+  <div class="book-toc-content">
+    {{ template "toc" . }}
+  </div>
+</aside>
+{{ end }}
+
+{{ define "toc" }}
+  {{ partial "docs/taxonomy" . }}
+{{ end }}
+
+{{ define "footer" }}
+  {{ partial "docs/pagination.html" . }}
+{{ end }}

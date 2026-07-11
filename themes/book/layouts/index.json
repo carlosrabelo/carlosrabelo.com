@@ -1,0 +1,34 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": {{ .Site.Title | jsonify }},
+  "home_page_url": {{ .Site.BaseURL | jsonify }},
+  "feed_url": {{ "feed.json" | absURL | jsonify }},
+  "description": {{ .Site.Params.description | jsonify }},
+  "favicon": {{ "assets/favicon.ico" | absURL | jsonify }},
+  "expired": false,
+  "author": {
+    "name": {{ .Site.Params.author | jsonify }},
+    "url": {{ .Site.BaseURL | jsonify }}
+  },
+  "items": [
+    {{ $list := where .Site.RegularPages "Section" "in" (partial "article-sections.html" .) }}
+    {{ $len := len $list }}
+    {{ range $index, $element := $list }}
+    {
+      "id": {{ sha1 .Title | jsonify }},
+      "title": {{ .Title | jsonify }},
+      "summary": {{ .Description | jsonify }},
+      "content_text": {{ .Content | plainify | jsonify }},
+      "content_html": {{ .Content | jsonify }},
+      "url": {{ .Permalink | jsonify }},
+      "date_published": "{{ .Date.Format "2006-01-02T15:04:05-07:00" }}",
+      "date_modified": "{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}",
+      "author": {
+        "name": {{ .Site.Params.author | jsonify }},
+        "url": {{ .Site.BaseURL | jsonify }}
+      },
+      "tags": [{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}{{ $tag | jsonify }}{{ end }}]
+    }{{ if ne (add $index 1) $len }},{{ end }}
+    {{ end }}
+  ]
+}

@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h1 class="section-title">{{ .Title }}</h1>
+  </div>
+</div>
+{{ if .Content }}
+<div class="markdown section-description">
+  {{ .Content }}
+</div>
+{{ end }}
+<ul id="post-list">
+  {{ $paginator := .Paginate .Pages }}
+  {{ range $paginator.Pages }}
+  {{ partial "post-list-item.html" . }}
+  {{ end }}
+</ul>
+{{ partial "pagination.html" $paginator }}
+{{ end }}
